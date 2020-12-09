@@ -1,0 +1,29 @@
+class CandleStickTest {
+public static void main(String[] args) {
+// Candles-Liste deklarieren und initialisieren
+List<Candle> candles = new ArrayList<>();
+candles.add(new Candle(3, 24, 28, 16, 35));
+candles.add(new Candle(12, 23, 29, 21, 24));
+candles.add(new Candle(4, 23, 12, 11, 36));
+// Frame-Objekt frame erzeugen
+Frame frame = new Frame("Candlestick-Chart");
+// "Fenster schließen"-Event per Instanz einer passenden anonymen lokalen
+// Adapterklasse behandeln
+frame.addWindowListener(new WindowAdapter(){
+public void windowClosing(WindowEvent e) {
+System.exit(0);
+}
+});
+// CandleStickPanel-Objekt csp erzeugen, Farbschema sei REDGREEN, Zoomfaktor sei 3
+// Breite = 400, Höhe = 100 per Dimension-Objekt festlegen
+CandleStickPanel csp =
+new CandleStickPanel(candles, CandleColorScheme.REDGREEN, 3);
+csp.setPreferredSize(new Dimension(400, 100));
+// Panel zum Frame hinzufügen
+frame. add(csp);
+// In Bildschirmmitte zentrieren
+frame. setLocationRelativeTo(null);
+// Frame sichtbar machen
+frame. setVisible(true);
+}
+}

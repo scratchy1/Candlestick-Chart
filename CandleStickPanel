@@ -1,0 +1,17 @@
+class CandleStickPanel extends Panel {
+private List<Candle> candles;
+private CandleColorScheme scheme;
+private double zoom;
+public CandleStickPanel( List<Candle> candles, CandleColorScheme scheme, double zoom) {
+this.candles = candles;
+this.scheme = scheme;
+this.zoom = zoom;
+}
+public void paint(Graphics g) {
+Graphics2D g2d = (Graphics2D) g;
+// Über alle Kerzen iterieren und deren Methode zum Zeichnen aufrufen
+for (Candle candle : candles) {
+candle.drawOnCanvas(g2d, scheme);
+}
+}
+}
